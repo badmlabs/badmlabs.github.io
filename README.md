@@ -1,42 +1,41 @@
-# badmlabs.github.io — App Links hosting
+<p align="center">
+  <img src="https://badmlabs.github.io/assets/badmlabs-wordmark.png" alt="badmlabs — Court Science" width="480" />
+</p>
 
-Deploy **contents of this folder** (not the `links-site` folder itself) to the root of the
-[`badmlabs.github.io`](https://github.com/badmlabs/badmlabs.github.io) repo.
+<p align="center"><strong>Court Science</strong></p>
 
-## Setup
+<p align="center">
+  Open-source tools for badminton drills, positioning, and deep-link sharing.
+</p>
 
-1. Enable GitHub Pages: repo **Settings → Pages →** branch `main`, folder `/ (root)`.
-2. Jekyll excludes dot-directories by default — `_config.yml` includes `.well-known` so
-   `assetlinks.json` is published. `.nojekyll` is also present as a fallback.
-3. Verify:
-   ```bash
-   curl https://badmlabs.github.io/.well-known/assetlinks.json
-   curl -I "https://badmlabs.github.io/court/import?d=test"
-   ```
+<p align="center">
+  <a href="https://badmlabs.github.io">Visit the site</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/badmlabs">Organization</a>
+</p>
 
-## Release fingerprint
+---
 
-`assetlinks.json` includes the **debug** keystore SHA256 for local/emulator builds.
+## Projects
 
-For Play Store builds, add your **release/upload** certificate SHA256:
+| Project | Description | Links |
+|---------|-------------|-------|
+| **Badminton Court Simulator** | Drag-and-drop court drills with shareable deep links | [Site](https://badmlabs.github.io) · [GitHub](https://github.com/badmlabs/badminton-court-simulator) · [Play Store](https://play.google.com/store/apps/details?id=com.haritabhgupta.badmintoncourtsimulator) |
+| **Shuttlrs** | Club session scheduling, court rotation, automated player selection | [shuttlrs.com](https://shuttlrs.com) · [GitHub](https://github.com/badmlabs/shuttlrs) |
 
-```bash
-keytool -list -v -keystore YOUR_RELEASE_KEYSTORE -alias YOUR_ALIAS
-```
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://github.com/badmlabs/badminton-court-simulator)
 
-Or Play Console → **Setup → App signing → SHA-256 certificate fingerprint**.
+## What this repo hosts
 
-Append the fingerprint to the `sha256_cert_fingerprints` array in `.well-known/assetlinks.json`.
+- Public landing page at **[badmlabs.github.io](https://badmlabs.github.io)**
+- Android App Links / deep-link redirect pages (`/i.html`, `/court/import`)
+- `.well-known/assetlinks.json` for verified app link handoff
 
-## Share URL format
+## Developer docs
 
-```
-https://badmlabs.github.io/i.html?d=<base64url>
-```
+Technical setup (Pages config, keystore fingerprints, share URL format) lives in **[DOCS.md](./DOCS.md)**.
 
-Also supported for backward compatibility: `/court/import.html?d=...`, `/court/import?d=...`
-and `/court/import/?d=...`.
+---
 
-## Future apps
-
-Add another path (e.g. `shuttlrs/import/index.html`) and another entry in `assetlinks.json` for each Android app package.
+<p align="center"><sub>Ireland · MIT License</sub></p>

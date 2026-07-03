@@ -471,6 +471,18 @@ main > section,
   transition: color 0.2s;
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+}
+
+.footer-links span[aria-hidden="true"] {
+  color: var(--border-strong);
+  user-select: none;
+}
+
 .footer a:hover {
   color: var(--accent);
 }
