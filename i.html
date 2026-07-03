@@ -7,12 +7,19 @@
   <style>
     body { font-family: system-ui, sans-serif; max-width: 32rem; margin: 2rem auto; padding: 0 1rem; }
     a { color: #1565c0; }
+    .store-fallback { margin-top: 1.5rem; color: #555; font-size: 0.95rem; }
   </style>
 </head>
 <body>
   <h1>Badminton Court Simulator</h1>
   <p id="status">Opening app…</p>
   <p><a id="fallback" href="#">Tap here if the app did not open</a></p>
+  <p class="store-fallback">
+    Don't have the app?
+    <a href="https://play.google.com/store/apps/details?id=com.haritabhgupta.badmintoncourtsimulator">
+      Get it on Google Play
+    </a>
+  </p>
   <script>
     const params = new URLSearchParams(location.search);
     const d = params.get('d');
