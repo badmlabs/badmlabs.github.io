@@ -3,60 +3,99 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="badmlabs — Court science. Mobile tools for badminton court analysis and drill sharing." />
+  <meta name="description" content="badmlabs — court science. Open-source tools for badminton drills, positioning, and analysis." />
+  <meta name="theme-color" content="#060d09" />
+  <meta property="og:title" content="badmlabs — Court Science" />
+  <meta property="og:description" content="Open-source tools for badminton drills, positioning, and analysis." />
+  <meta property="og:image" content="https://badmlabs.github.io/assets/badmlabs-wordmark.png" />
   <title>badmlabs — Court Science</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230b1f13'/%3E%3Ctext x='50' y='70' font-family='Arial, sans-serif' font-weight='700' font-size='58' fill='%23f0d050' text-anchor='middle'%3Eb%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="page">
-    <div class="panel">
-      <header class="hero">
-        <img
-          class="wordmark"
-          src="/assets/badmlabs-wordmark.png"
-          alt="badmlabs — Court Science"
-          width="640"
-          height="160"
-        />
-        <p class="tagline">Court Science</p>
-        <p class="lead">
-          Mobile tools for badminton court analysis and drill sharing.
-        </p>
-      </header>
+  <div class="backdrop" aria-hidden="true">
+    <div class="orb orb-gold"></div>
+    <div class="orb orb-green"></div>
+    <svg class="court" viewBox="0 0 320 700" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="10" y="10" width="300" height="680" />
+      <line x1="33" y1="10" x2="33" y2="690" />
+      <line x1="287" y1="10" x2="287" y2="690" />
+      <line x1="10" y1="350" x2="310" y2="350" stroke-dasharray="7 7" />
+      <line x1="10" y1="250" x2="310" y2="250" />
+      <line x1="10" y1="450" x2="310" y2="450" />
+      <line x1="10" y1="48" x2="310" y2="48" />
+      <line x1="10" y1="652" x2="310" y2="652" />
+      <line x1="160" y1="10" x2="160" y2="250" />
+      <line x1="160" y1="450" x2="160" y2="690" />
+    </svg>
+  </div>
 
-      <section aria-labelledby="projects-heading">
-        <h2 id="projects-heading" class="section-title">Projects</h2>
+  <header class="nav">
+    <a class="brand" href="/">badm<span>labs</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#projects">Projects</a>
+      <a class="nav-cta" href="https://github.com/badmlabs">GitHub</a>
+    </nav>
+  </header>
 
-        <article class="project-card">
-          <h3>
-            <a href="https://github.com/badmlabs/badminton-court-simulator">
-              Badminton Court Simulator
-            </a>
-          </h3>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Court Science</p>
+      <h1 class="title">badm<span class="accent">labs</span></h1>
+      <p class="lead">
+        Open-source experiments for badminton — court positioning, drill
+        design, and sharing that clicks straight into the app.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/badmlabs/badminton-court-simulator">View the simulator</a>
+        <a class="btn btn-ghost" href="https://github.com/badmlabs">Explore the org</a>
+      </div>
+      <ul class="chips">
+        <li><span class="dot dot-red"></span>Drill designer</li>
+        <li><span class="dot dot-blue"></span>Deep-link sharing</li>
+        <li><span class="dot dot-gold"></span>Built for Android</li>
+      </ul>
+    </section>
+
+    <section class="projects" id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="section-title">Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <h3>
+              <a href="https://github.com/badmlabs/badminton-court-simulator">Badminton Court Simulator</a>
+            </h3>
+            <span class="status">Active</span>
+          </div>
           <p>
-            Drag-and-drop court simulator for positioning players and shuttles,
-            building drill step sets, and sharing sequences via deep links.
+            Drag-and-drop players and shuttle, build step-by-step drills, and
+            share them as links that open right on the court.
           </p>
-          <div class="project-links">
-            <a
-              class="btn btn-primary"
-              href="https://github.com/badmlabs/badminton-court-simulator"
-            >
-              View on GitHub
-            </a>
-            <span class="badge-soon">Play Store — coming soon</span>
+          <ul class="tags">
+            <li>TypeScript</li>
+            <li>Expo</li>
+            <li>React Native</li>
+          </ul>
+          <div class="card-links">
+            <a class="btn btn-small btn-primary" href="https://github.com/badmlabs/badminton-court-simulator">GitHub</a>
+            <span class="soon">Play Store — soon</span>
           </div>
         </article>
-      </section>
 
-      <footer class="site-footer">
-        <p>Ireland</p>
-        <p>
-          <a href="https://github.com/badmlabs">github.com/badmlabs</a>
-        </p>
-        <p>Open source under the MIT License.</p>
-      </footer>
-    </div>
+        <article class="card card-ghost">
+          <h3>Next experiment</h3>
+          <p>More court science brewing in the lab.</p>
+        </article>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <p>© 2026 badmlabs · Ireland</p>
+    <p><a href="https://github.com/badmlabs">GitHub</a> · MIT License</p>
+  </footer>
 </body>
 </html>
