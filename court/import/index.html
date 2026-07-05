@@ -16,20 +16,46 @@
   <p><a id="fallback" href="#">Tap here if the app did not open</a></p>
   <p class="store-fallback">
     Don't have the app?
-    <a href="https://play.google.com/store/apps/details?id=com.haritabhgupta.badmintoncourtsimulator">
+    <a id="store" href="https://play.google.com/store/apps/details?id=com.haritabhgupta.badmintoncourtsimulator">
       Get it on Google Play
     </a>
   </p>
   <script>
     const params = new URLSearchParams(location.search);
     const d = params.get('d');
+    const PLAY_URL =
+      'https://play.google.com/store/apps/details?id=com.haritabhgupta.badmintoncourtsimulator';
+    document.getElementById('store').href = PLAY_URL;
     if (!d) {
       document.getElementById('status').textContent = 'Missing drill data in this link.';
       document.getElementById('fallback').style.display = 'none';
     } else {
-      const appLink = 'badminton-court-simulator://import?d=' + encodeURIComponent(d);
-      document.getElementById('fallback').href = appLink;
-      location.replace(appLink);
+      const payload = 'import?d=' + encodeURIComponent(d);
+      const schemeLink = 'badminton-court-simulator://' + payload;
+      // Chrome/Android: opens the app when installed, otherwise navigates to
+      // the fallback URL (the Play listing) by itself.
+      const intentLink =
+        'intent://' + payload +
+        '#Intent;scheme=badminton-court-simulator' +
+        ';package=com.haritabhgupta.badmintoncourtsimulator' +
+        ';S.browser_fallback_url=' + encodeURIComponent(PLAY_URL) + ';end';
+      document.getElementById('fallback').href = schemeLink;
+
+      // If the app opened, this tab loses visibility — cancel the store bounce.
+      let leftPage = false;
+      const markLeft = () => { leftPage = true; };
+      document.addEventListener('visibilitychange', () => { if (document.hidden) markLeft(); });
+      window.addEventListener('pagehide', markLeft);
+      window.addEventListener('blur', markLeft);
+
+      const isAndroid = /android/i.test(navigator.userAgent);
+      location.replace(isAndroid ? intentLink : schemeLink);
+      if (isAndroid) {
+        // Safety net for browsers that ignore intent:// (e.g. Firefox).
+        setTimeout(() => {
+          if (!leftPage && !document.hidden) location.replace(PLAY_URL);
+        }, 2000);
+      }
     }
   </script>
 </body>
